@@ -1,0 +1,33 @@
+.container {
+    padding: 0px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+.mat-card-title {
+    margin: 20px 0px;
+    padding-left: 0px;
+}
+
+.mat-card-content {
+    padding: 0px 30px;
+    overflow: auto;
+}
+
+.mat-card-actions {
+    align-self: flex-end;
+}
+
+.mat-cell {
+    padding: 20px;
+}
+
+.mat-form-field {
+    width: 400px;
+}

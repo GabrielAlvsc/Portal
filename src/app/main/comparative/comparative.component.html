@@ -1,0 +1,129 @@
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<div class="button-container">
+    <button mat-raised-button id="return-button" (click)="goBack()" title="Voltar para a tela inicial">
+        Voltar
+    </button>
+
+    <button mat-raised-button id="add-button" (click)="openSelect()" title="Adicionar equipamento">
+        Adicionar
+    </button>
+</div>
+
+
+
+<div class="table-container">
+    <div class="table-group">
+        <table class="header-table header-fixed" style="top: 125px; z-index: 1;">
+            <thead>
+                <tr style="height: 235px;"></tr>
+                <tr *ngFor="let static of listStaticTable">
+                    <th>
+                        {{static.name}}
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="body-table-container">
+            <table *ngFor="let equipment of this.equipmentList; let i = index">
+                <div style="height: 48px;">
+                    <button title="Remover equipamento" *ngIf="this.equipmentList.length > 1" mat-icon-button (click)="deleteEquipment(equipment.bookId)">
+                        <mat-icon style="color: red;">
+                            close
+                        </mat-icon>
+                    </button>
+                </div>
+                <tbody>
+                    <div class="image-container">
+                        <img src="{{equipment.imagePath}}" alt="equipment Image">
+                    </div>
+                    <tr *ngFor="let static of listStaticTable; let i = index">
+                        <ng-container *ngIf="i == 3; else elseTemplate">
+                            <td style="color: blue; cursor: pointer" 
+                                title="{{equipment[static.value]}}"
+                                (click)="navigateToDevice(equipment.equipmentId)">
+                                {{equipment[static.value]}}
+                            </td>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <td 
+                            title="{{equipment[static.value]}}">
+                                {{equipment[static.value]}}
+                            </td>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="title-container">
+        <div class="title-box header-fixed">
+            <h4>Características</h4>
+        </div>
+    </div>
+    <div class="table-group">
+
+        <table class="header-table header-fixed">
+            <thead>
+                <tr *ngFor="let feature of this.allFeatures">
+                    <th>
+                        {{feature}}
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="body-table-container">
+            <table class="body-table" *ngFor="let columns of this.featuresMatrix[0]; let i = index">
+                <tbody>
+                    <tr *ngFor="let rows of this.featuresMatrix; let j = index">
+                        <td title="{{featuresMatrix[j][i]}}">
+                            {{featuresMatrix[j][i]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="title-container">
+        <div class="title-box header-fixed">
+            <h4>Resumo dos Testes</h4>
+        </div>
+    </div>
+
+    <div class="table-group">
+        <table class="header-table header-fixed">
+            <thead>
+                <tr *ngFor="let item of this.allItems">
+                    <th>
+                        {{item}}
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="body-table-container">
+            <table *ngFor="let columns of this.itemsMatrix[0]; let i = index">
+                <tbody>
+                    <tr *ngFor="let rows of this.itemsMatrix; let j = index">
+                        <td  title="{{itemsMatrix[j][i]}}">
+                            <span *ngIf="this.itemsMatrix[j][i] == true" class="material-symbols-outlined"
+                                style="color: var(--green);">
+                                done
+                            </span>
+                            <span *ngIf="this.itemsMatrix[j][i] == false" class="material-symbols-outlined"
+                                style="color: var(--red);">
+                                close
+                            </span>
+                            <span *ngIf="this.itemsMatrix[j][i] == '-'">-</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

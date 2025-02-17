@@ -1,0 +1,104 @@
+.header {
+    background-image: linear-gradient(to right, var(--blue-dark), var(--blue-light));
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    align-content: center;
+}
+
+.header .logo {
+    max-height: 32px;
+}
+
+.nav {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav a:hover {
+    background-color: rgba(7, 120, 207, 0.733);
+}
+
+.right-nav {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.right-nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-nav a:hover {
+    background-color: #0198bf;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h4 {
+    font-size: xx-small;
+    align-self: end;
+}
+
+.user-name{
+    padding-top: 0px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+}
+
+.user-icon{
+    width: fit-content;
+    padding-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: aliceblue;
+}
+
+.logout{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: aliceblue;
+    /* margin-right: 10px;  */
+}
+
+.icon{
+    align-self: center;
+    padding-left: 10px;
+    color: aliceblue;
+}
+
+.bug-button{
+    background-color: transparent; 
+}
+
+.bug-icon{
+    color: aliceblue;
+}

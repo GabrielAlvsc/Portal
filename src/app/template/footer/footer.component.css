@@ -1,0 +1,17 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 15px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--purple);
+}
+
+.footer > span {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.footer > span > h2{
+    font-size: xx-small;
+}

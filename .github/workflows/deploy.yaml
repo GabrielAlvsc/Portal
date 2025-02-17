@@ -1,0 +1,37 @@
+name: Pull on server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+    
+    steps:
+      #- uses: actions/checkout@v4
+
+      - name: Checkout to main
+        run: git checkout main
+        
+      - name: Run a pull request
+        run: git pull origin main
+        
+      - name: Run install (Angular)
+        run: npm install
+
+      - name: Building
+        run: ng build -c production
+
+      - name: Uninstall last version
+        run: sudo rm -rf /var/www/portal
+
+      - name: create version file
+        run: echo "echo $(( $(git rev-list --count --all)/1000 + 1)).$(( $(git rev-list --count --all)%1000)) " >  dist/portal/get_version.sh
+
+      - name: Install Current Version
+        run: sudo cp -r dist/portal /var/www/portal
+        
+      - name: Atualizar ambiente de desenvolvimento
+        run: scp -r /var/www/portal root@201.48.114.82:/var/www
